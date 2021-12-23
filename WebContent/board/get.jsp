@@ -1,6 +1,11 @@
 <%@page import="vo.Board"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%
+	Board board = (Board)request.getAttribute("boardGet");
+	if(board == null)
+		System.out.println("화면에 제대로 출력되지 않음");
+%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -22,21 +27,17 @@
   </style>
 </head>
 <body>
-<%
-	Board board = (Board)request.getAttribute("boardGet");
-	System.out.println(board);
-%>
 <div class="container-fluid p-5 bg-primary text-white text-center">
   <h1>My First Bootstrap Page</h1>
   <p>Resize this responsive page to see the effect!</p> 
 </div>
 <div id="divwidth">
 	  <div class="mb-3 mt-3">
-	    <label for="email" class="form-label">Title:</label>
+	    <label class="form-label">Title:</label>
 	    <p><%=board.getTitle() %></p>
 	  </div>
 	  <div class="mb-3">
-	    <label for="pwd" class="form-label">writer:</label>
+	    <label class="form-label">writer:</label>
 	    <p><%=board.getWriter() %></p>
 	  </div>
 	  <div>

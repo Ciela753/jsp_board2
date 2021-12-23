@@ -15,9 +15,16 @@ public class BoardGet extends HttpServlet {
 	private BoardService boardService = new BoardService();  
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		Long bno = (long) Integer.parseInt(req.getParameter("bno"));
+		Long bno = Long.parseLong(req.getParameter("bno"));
+		if(bno == null)
+			System.out.println("request null");
 		req.setAttribute("boardGet", boardService.get(bno));
 		req.getRequestDispatcher("board/get.jsp").forward(req, resp);
 	}
-	
+	public static void main(String[] args) {
+		BoardGet boardGet = new BoardGet();
+		
+		System.out.println(boardGet.boardService.get(21L));
+		
+	}
 }

@@ -12,6 +12,10 @@ public class BoardService {
 		return dao.list();
 	}
 	public Board get(Long bno) {
+		if(dao.get(bno) ==null)
+			System.out.println("서비스 문제");
+		else 
+			System.out.println("컨트롤러 정상적 실행");
 		return dao.get(bno);
 	}
 	public void register(Board board) {
