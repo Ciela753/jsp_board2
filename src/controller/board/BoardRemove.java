@@ -8,13 +8,19 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import service.BoardService;
+import vo.Board;
+
 @WebServlet("/board/remove")
 public class BoardRemove extends HttpServlet{
-
+	BoardService boardService = new BoardService(); 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		super.doPost(req, resp);
+		Long bno = Long.parseLong(req.getParameter("bno"));
+		boardService.remove(bno);
+		req.getRequestDispatcher("board/delete.jsp").forward(req, resp);
+		
+		resp.sendRedirect("get.jsp");
 	}
 	
 }

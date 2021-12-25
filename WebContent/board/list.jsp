@@ -41,7 +41,7 @@ ArrayList<Board> arrayList = (ArrayList<Board>)request.getAttribute("boardList")
     <%for(int i=0; i<arrayList.size(); i++) {%>
       <tr>
         <td><%=arrayList.get(i).getBno()%></td>
-        <td><a href="board/get.jsp?bno=<%=arrayList.get(i).getBno()%>"><%=arrayList.get(i).getTitle()%></a></td>
+        <td><a href="board/get?bno=<%=arrayList.get(i).getBno()%>"><%=arrayList.get(i).getTitle()%></a></td>
         <td><%=arrayList.get(i).getWriter()%></td>
         <td><%=arrayList.get(i).getRegDate()%></td>
       </tr>

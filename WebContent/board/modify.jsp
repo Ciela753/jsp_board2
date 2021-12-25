@@ -2,20 +2,19 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
-	Board board = (Board)request.getAttribute("boardGet");
+	Board board = (Board)request.getAttribute("boardModify");
 	if(board == null)
-		System.out.println("board값 제대로 넘어오지 않았음");
-
-%>
+		System.out.println("화면에 제대로 출력되지 않음");
+%>    
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <title>Bootstrap 5 Example</title>
+	<title>Bootstrap Example</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-<style>
+  <style>
   	#divwidth {
   		margin: 50px 350px;
   	}
@@ -30,24 +29,26 @@
 <body>
 <div class="container-fluid p-5 bg-primary text-white text-center">
   <h1>My First Bootstrap Page</h1>
-  <p>Resize this responsive page to see the effect!</p> 
+  <p><a href="list.jsp">Back to List</a></p> 
 </div>
 <div id="divwidth">
+	<form action="modify" method="post" >
 	  <div class="mb-3 mt-3">
-	    <label class="form-label">Title:</label>
-	    <p><%=board.getTitle() %></p>
+	    <label for="email" class="form-label">Title:</label>
+	    <input type="text" class="form-control" id="email" value="<%=board.getTitle() %>" name="title">
 	  </div>
 	  <div class="mb-3">
-	    <label class="form-label">writer:</label>
-	    <p><%=board.getWriter() %></p>
+	    <label for="pwd" class="form-label">writer:</label>
+	    <input type="text" class="form-control" id="pwd" value="<%=board.getWriter() %>" name="writer" readonly>
 	  </div>
 	  <div>
 	  	<label for="comment">Contents:</label>
-	    <p><%=board.getContent() %></p>
+		<textarea class="form-control" rows="5" id="comment" value="<%=board.getContent() %>" name="content"></textarea>
 	  </div>
-	  <button type="button" onClick="location.href='modify.jsp?bno=<%=board.getBno()%>'" class="btn btn-primary">Modify</button>
-	  <button type="button" onClick="location.href='delete.jsp?bno=<%=board.getBno()%>'" class="btn btn-primary">Delete</button>
+	  <button type="submit" class="btn btn-primary">Modify</button>
 	  <button type="button" onclick="location.href='list.jsp'" class="btn btn-primary">List</button>
+	</form>
 </div>
+
 </body>
 </html>

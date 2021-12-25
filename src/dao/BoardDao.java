@@ -106,8 +106,47 @@ public class BoardDao {
 		}
 	}
 	public void modify(Board board) {
-		
+		Connection connection = DBConn.getConnection();
+		PreparedStatement pstmt;
+		try {
+			pstmt = connection.prepareStatement("UPDATE TBL_BOARD SET TITLE= ?, CONTENT= ? WHERE BNO= ?");
+			int parameterIndex=1;
+			pstmt.setString(parameterIndex++, board.getTitle());
+			pstmt.setString(parameterIndex++, board.getContent());
+			pstmt.setLong(parameterIndex++, board.getBno());
+			
+			pstmt.executeQuery();
+			System.out.println("글 수정 성공");
+		} catch(SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if(connection!=null)
+					connection.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
 	}
 	public void remove(Long bno) {
+		Connection connection = DBConn.getConnection();
+		PreparedStatement pstmt;
+		try {
+			pstmt = connection.prepareStatement("DELETE FROM TBL_BOARD WHERE BNO=?");
+			int parameterIndex=1;
+			pstmt.setLong(parameterIndex++, bno);
+			
+			pstmt.executeQuery();
+			System.out.println("글 삭제 성공");
+		} catch(SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if(connection!=null)
+					connection.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
 	}
 }

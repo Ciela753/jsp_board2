@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import service.BoardService;
+import vo.Board;
 
 @WebServlet("/board/get")
 public class BoardGet extends HttpServlet {
@@ -16,15 +17,8 @@ public class BoardGet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		Long bno = Long.parseLong(req.getParameter("bno"));
-		if(bno == null)
-			System.out.println("request null");
-		req.setAttribute("boardGet", boardService.get(bno));
-		req.getRequestDispatcher("board/get.jsp").forward(req, resp);
-	}
-	public static void main(String[] args) {
-		BoardGet boardGet = new BoardGet();
-		
-		System.out.println(boardGet.boardService.get(21L));
-		
+		Board boardGet = boardService.get(bno);
+		req.setAttribute("boardGet", boardGet);
+		req.getRequestDispatcher("get.jsp").forward(req, resp);
 	}
 }
