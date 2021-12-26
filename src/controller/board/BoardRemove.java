@@ -14,13 +14,13 @@ import vo.Board;
 @WebServlet("/board/remove")
 public class BoardRemove extends HttpServlet{
 	BoardService boardService = new BoardService(); 
+
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		Long bno = Long.parseLong(req.getParameter("bno"));
 		boardService.remove(bno);
-		req.getRequestDispatcher("board/delete.jsp").forward(req, resp);
 		
-		resp.sendRedirect("get.jsp");
+		resp.sendRedirect("list"); 
 	}
 	
 }

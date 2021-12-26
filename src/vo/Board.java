@@ -10,11 +10,11 @@ public class Board {
 	private Date regDate;
 	public Board() {
 	}
-	public Board(Long bno, String title, String content, String writer, Date regDate) {
+	public Board(Long bno, String title, String writer, String content, Date regDate) {
 		this.bno = bno;
 		this.title = title;
-		this.content = content;
 		this.writer = writer;
+		this.content = content;
 		this.regDate = regDate;
 	}
 	public Long getBno() {

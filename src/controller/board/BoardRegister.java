@@ -28,7 +28,7 @@ public class BoardRegister extends HttpServlet{
 		board.setWriter(req.getParameter("writer"));
 		boardService.register(board);
 		
-		resp.sendRedirect("list.jsp");
+		resp.sendRedirect("list");
 	}
 	
 }

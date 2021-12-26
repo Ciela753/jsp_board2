@@ -25,24 +25,15 @@ public class BoardModify extends HttpServlet {
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		req.setCharacterEncoding("UTF-8");
 		Long bno = Long.parseLong(req.getParameter("bno"));
 		Board board = new Board();
 		board.setBno(bno);
+		
 		board.setTitle(req.getParameter("title"));
 		board.setContent(req.getParameter("content"));
-		board.setWriter(req.getParameter("write"));
 		boardService.modify(board);
 		
-		resp.sendRedirect("get.jsp");
+		resp.sendRedirect("get?bno="+bno);
  	}
-	public static void main(String[] args) {
-		BoardModify boardModify = new BoardModify();
-		Board board = new Board();
-		board.setBno(21L);
-		board.setTitle("수정 확인하는 제목");
-		board.setContent("수정 확인하는 내용");
-		boardModify.boardService.modify(board);
-		
-	}
-	
 }

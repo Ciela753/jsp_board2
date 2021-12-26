@@ -3,8 +3,9 @@
     pageEncoding="UTF-8"%>
 <%
 	Board board = (Board)request.getAttribute("boardModify");
-	if(board == null)
-		System.out.println("화면에 제대로 출력되지 않음");
+
+	System.out.println("글쓴이: "+board.getWriter());
+	System.out.println("글내용: "+board.getContent());
 %>    
 <!DOCTYPE html>
 <html>
@@ -29,10 +30,10 @@
 <body>
 <div class="container-fluid p-5 bg-primary text-white text-center">
   <h1>My First Bootstrap Page</h1>
-  <p><a href="list.jsp">Back to List</a></p> 
+  <p><a href="list">Back to List</a></p> 
 </div>
 <div id="divwidth">
-	<form action="modify" method="post" >
+	<form action="modify?bno=<%=board.getBno()%>" method="post" >
 	  <div class="mb-3 mt-3">
 	    <label for="email" class="form-label">Title:</label>
 	    <input type="text" class="form-control" id="email" value="<%=board.getTitle() %>" name="title">
@@ -43,10 +44,10 @@
 	  </div>
 	  <div>
 	  	<label for="comment">Contents:</label>
-		<textarea class="form-control" rows="5" id="comment" value="<%=board.getContent() %>" name="content"></textarea>
+		<textarea class="form-control" rows="5" id="comment" name="content"><%=board.getContent() %></textarea>
 	  </div>
 	  <button type="submit" class="btn btn-primary">Modify</button>
-	  <button type="button" onclick="location.href='list.jsp'" class="btn btn-primary">List</button>
+	  <button type="button" onclick="location.href='get?bno=<%=board.getBno() %>'" class="btn btn-primary">Detail</button>
 	</form>
 </div>
 

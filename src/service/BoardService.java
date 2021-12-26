@@ -12,8 +12,6 @@ public class BoardService {
 		return dao.list();
 	}
 	public Board get(Long bno) {
-		if(dao.get(bno) ==null)
-			System.out.println("서비스 문제");
 		return dao.get(bno);
 	}
 	public void register(Board board) {

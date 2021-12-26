@@ -18,7 +18,7 @@ public class BoardList extends HttpServlet {
 		// 
 		System.out.println(boardService.list());
 		req.setAttribute("boardList", boardService.list());
-		req.getRequestDispatcher("board/list.jsp").forward(req, resp);
+		req.getRequestDispatcher("list.jsp").forward(req, resp);
 	}
 	
 }

@@ -23,7 +23,7 @@
 <body>
 <div class="container-fluid p-5 bg-primary text-white text-center">
   <h1>My First Bootstrap Page</h1>
-  <p><a href="list.jsp">Back to List</a></p> 
+  <p><a href="list">Back to List</a></p> 
 </div>
 <div id="divwidth">
 	<form action="register" method="post" >
@@ -40,7 +40,7 @@
 		<textarea class="form-control" rows="5" id="comment" name="content"></textarea>
 	  </div>
 	  <button type="submit" class="btn btn-primary">Submit</button>
-	  <button type="button" onclick="location.href='list.jsp'" class="btn btn-primary">List</button>
+	  <button type="button" onclick="location.href='list'" class="btn btn-primary">List</button>
 	</form>
 </div>
 

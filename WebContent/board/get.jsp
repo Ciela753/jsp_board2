@@ -32,7 +32,8 @@
   <h1>My First Bootstrap Page</h1>
   <p>Resize this responsive page to see the effect!</p> 
 </div>
-<div id="divwidth">
+<form action="remove?bno=<%=board.getBno()%>" method="post">
+<div id="divwidth" >
 	  <div class="mb-3 mt-3">
 	    <label class="form-label">Title:</label>
 	    <p><%=board.getTitle() %></p>
@@ -45,9 +46,11 @@
 	  	<label for="comment">Contents:</label>
 	    <p><%=board.getContent() %></p>
 	  </div>
-	  <button type="button" onClick="location.href='modify.jsp?bno=<%=board.getBno()%>'" class="btn btn-primary">Modify</button>
-	  <button type="button" onClick="location.href='delete.jsp?bno=<%=board.getBno()%>'" class="btn btn-primary">Delete</button>
-	  <button type="button" onclick="location.href='list.jsp'" class="btn btn-primary">List</button>
+	  <button type="button" onClick="location.href='modify?bno=<%=board.getBno()%>'" class="btn btn-primary">Modify</button>
+	  <button type="submit" class="btn btn-primary">delete</button>
+	  <button type="button" onclick="location.href='list'" class="btn btn-primary">List</button>
 </div>
+
+</form>
 </body>
 </html>

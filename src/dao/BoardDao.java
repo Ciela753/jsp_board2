@@ -27,7 +27,7 @@ public class BoardDao {
 		List<Board> list = new ArrayList<Board>();
 		PreparedStatement pstmt;
 		try {
-			pstmt = connection.prepareStatement("SELECT * FROM TBL_BOARD ORDER BY BNO DESC");
+			pstmt = connection.prepareStatement("SELECT BNO, TITLE, WRITER, CONTENT, REGDATE FROM TBL_BOARD ORDER BY BNO DESC");
 			ResultSet rs = pstmt.executeQuery();
 			while(rs.next()) {
 				int cIndx = 1;
