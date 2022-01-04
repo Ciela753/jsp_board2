@@ -19,6 +19,6 @@ public class BoardGet extends HttpServlet {
 		Long bno = Long.parseLong(req.getParameter("bno"));
 		Board boardGet = boardService.get(bno);
 		req.setAttribute("boardGet", boardGet);
-		req.getRequestDispatcher("get.jsp").forward(req, resp);
+		req.getRequestDispatcher("/WEB-INF/jsp/board/get.jsp").forward(req, resp);
 	}
 }

@@ -1,4 +1,4 @@
-package controller.board;
+package controller.member;
 
 import java.io.IOException;
 
@@ -8,16 +8,16 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import service.BoardService;
+import service.MemberServiceImpl;
 
-@WebServlet({"/board/list", "/index.html"})
-public class BoardList extends HttpServlet {
-	private BoardService boardService = new BoardService();
+@WebServlet("/idValid")
+public class IdValid extends HttpServlet {
+
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		System.out.println(boardService.list());
-		req.setAttribute("boardList", boardService.list());
-		req.getRequestDispatcher("/WEB-INF/jsp/board/list.jsp").forward(req, resp);
+		String id = req.getParameter("id");
+		int result = new MemberServiceImpl().findBy(id) == null? 1:0;
+		resp.getWriter().print(result);
 	}
 	
 }

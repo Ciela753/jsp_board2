@@ -9,6 +9,7 @@ import java.util.List;
 
 import db.DBConn;
 import vo.Board;
+import vo.Criteria;
 
 public class BoardDao {
 	// 목록
@@ -48,6 +49,16 @@ public class BoardDao {
 		}
 		return list;
 	}
+	
+	public List<Board> list(Criteria cri) {
+		Connection connection = DBConn.getConnection();
+		List<Board> list = new ArrayList<Board>();
+		
+		
+		
+		return list;
+	}
+	
 	public Board get(Long bno) {
 		Connection connection = DBConn.getConnection();
 		Board board=null;

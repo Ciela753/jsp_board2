@@ -19,7 +19,7 @@ public class BoardModify extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		Long bno = Long.parseLong(req.getParameter("bno"));
 		req.setAttribute("boardModify", boardService.get(bno));
-		req.getRequestDispatcher("modify.jsp").forward(req, resp);
+		req.getRequestDispatcher("/WEB-INF/jsp/board/modify.jsp").forward(req, resp);
 		
 	}
 

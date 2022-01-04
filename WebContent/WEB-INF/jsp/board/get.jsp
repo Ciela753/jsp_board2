@@ -17,10 +17,10 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 <style>
   	#divwidth {
-  		margin: 50px 350px;
+  		margin: 50px 300px;
   	}
   	button {
-  		margin: 20px;
+  		margin: 10px;
   	}
   	a {
   		color:white;

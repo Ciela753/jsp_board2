@@ -11,12 +11,12 @@ import javax.servlet.http.HttpServletResponse;
 import service.BoardService;
 import vo.Board;
 
-@WebServlet("/board/register")
+@WebServlet("/board/regist")
 public class BoardRegister extends HttpServlet{
 	BoardService boardService = new BoardService();
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		req.getRequestDispatcher("board/regist.jsp").forward(req, resp);
+		req.getRequestDispatcher("/WEB-INF/jsp/board/regist.jsp").forward(req, resp);
 	}
 
 	@Override

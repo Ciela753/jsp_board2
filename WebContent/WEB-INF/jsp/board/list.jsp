@@ -2,6 +2,7 @@
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core"  prefix="c"%>
 <%
 ArrayList<Board> arrayList = (ArrayList<Board>)request.getAttribute("boardList");
 %>
@@ -23,7 +24,20 @@ ArrayList<Board> arrayList = (ArrayList<Board>)request.getAttribute("boardList")
 
 <div class="container-fluid p-5 bg-primary text-white text-center">
   <h1>My First Bootstrap Page</h1>
-  <p><a href="regist.jsp">Regist new Post!</a></p> 
+  
+  <c:choose>
+  	<c:when test="${empty member}">
+		<form action="login">
+			<button type="submit" class="btn btn-outline-warning">로그인</button>
+		</form>
+		<p><a href="join">회원가입</a><a href="#">ID/PW 찾기</a>
+  	</c:when>
+  	<c:otherwise>
+  		<p>${member.name}님 환영합니다.</p>
+  		<p><a href="join">정보수정</a> <a href="logout">로그아웃</a>
+		  <p><a href="board/regist">Regist new Post!</a></p> 
+  	</c:otherwise>
+  </c:choose>
 </div>
   
 <div class="container mt-5">
@@ -38,6 +52,7 @@ ArrayList<Board> arrayList = (ArrayList<Board>)request.getAttribute("boardList")
       </tr>
     </thead>
     <tbody>
+    
     <%for(int i=0; i<arrayList.size(); i++) {%>
       <tr>
         <td><%=arrayList.get(i).getBno()%></td>
@@ -49,6 +64,12 @@ ArrayList<Board> arrayList = (ArrayList<Board>)request.getAttribute("boardList")
     </tbody>
   </table>
   </div>
+</div>
+
+<div>
+	<aside>
+		
+	</aside>
 </div>
 
 </body>

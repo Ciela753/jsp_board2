@@ -1,4 +1,4 @@
-package controller.board;
+package controller.member;
 
 import java.io.IOException;
 
@@ -8,16 +8,14 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import service.BoardService;
+@WebServlet("/logout")
+public class logout extends HttpServlet {
 
-@WebServlet({"/board/list", "/index.html"})
-public class BoardList extends HttpServlet {
-	private BoardService boardService = new BoardService();
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		System.out.println(boardService.list());
-		req.setAttribute("boardList", boardService.list());
-		req.getRequestDispatcher("/WEB-INF/jsp/board/list.jsp").forward(req, resp);
+		// TODO Auto-generated method stub
+		req.getSession().invalidate();
+		resp.sendRedirect("index.html");
 	}
 	
 }

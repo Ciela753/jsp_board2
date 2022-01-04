@@ -4,11 +4,17 @@ import java.util.List;
 
 import dao.BoardDao;
 import vo.Board;
+import vo.Criteria;
 
 public class BoardService {
 	private BoardDao dao = new BoardDao();
 	
 	public List<Board> list() {
+		return dao.list();
+	}
+	public List<Board> list(Criteria cri) {
+		List<Board> list = dao.list();
+		
 		return dao.list();
 	}
 	public Board get(Long bno) {
