@@ -8,7 +8,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import db.DBConn;
+import utill.DBConn;
 import vo.Member;
 
 public class MemberDao {

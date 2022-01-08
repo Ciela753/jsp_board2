@@ -20,6 +20,14 @@ ArrayList<Board> arrayList = (ArrayList<Board>)request.getAttribute("boardList")
 		p a {
 			color :white;
 		}
+		.gallery-div-size {
+			width:137px;
+		    height: 137px;
+		    background-color: #C3AA9A;
+		    border-radius: 10px;
+		    display: inline-block;
+		    margin: 40px 40px 40px 40px;
+		}
 	</style>
 </head>
 <body>
@@ -37,50 +45,26 @@ ArrayList<Board> arrayList = (ArrayList<Board>)request.getAttribute("boardList")
   	<c:otherwise>
   		<p>${member.name}님 환영합니다.</p>
   		<p><a href="join">정보수정</a> <a href="logout">로그아웃</a>
-		  <p><a href="board/regist">Regist new Post!</a></p> 
+		  <p><a href="write">Regist new Post!</a></p> 
   	</c:otherwise>
   </c:choose>
 </div>
   
 <div class="container mt-5">
   <div class="row">
-    <table class="table table-striped">
-    <thead>
-      <tr>
-        <th>Bno</th>
-        <th>Title</th>
-        <th>Writer</th>
-        <th>Regdate</th>
-      </tr>
-    </thead>
-    <tbody>
-        <c:forEach items="${boardList}" var="b">
-	      <tr>
-        	<td>${b.bno}</td>
-        	<td><a href="get?bno=${b.bno}">${b.title}</a></td>
-        	<td>${b.writer}</td>
-        	<td><fmt:formatDate value="${b.regDate}" /></td>
-	      </tr>
-        </c:forEach>
-        <tr>
-        	<td colspan="4">
-        		<ul class="pagination justify-content-end">
-        			<li class="page-item ${page.prev ? '' : 'disabled' }">
-        				<a class="page-link" href="list?pageNum=${page.startPage-1}&amount=${page.cri.amount}">Previous</a>
-        			</li>
-        			<c:forEach begin="${page.startPage}" end="${page.endPage}" var="p">
-        				<li class="page-item ${p ==page.cri.pageNum ? 'active' : ''}">
-        					<a class="page-link" href="list?pageNum=${p}&amount=${page.cri.amount}">${p}</a>
-        				</li>
-        			</c:forEach>
-        			<li class="page-item ${page.next ? '' : 'disabled'}">
-        				<a class="page-link" href="list?pageNum=${page.endPage+1}&amount=${page.cri.amount}">Next</a>
-        			</li>
-        		</ul>
-        	</td>
-        </tr>
-    </tbody>
-  </table>
+    <c:set var="endCount" value="${page.cri.amount-(page.cri.amount-1)%3 + 2}"/>
+    <c:forEach begin="1" end="${endCount}" varStatus="stat">
+    	<c:set var="board" value="${list[stat.index-1]}"/>
+    	<c:if test="${stat.index % 3==1 }">
+    	
+    	</c:if>
+    	<c:if test="${not empty board}">
+    		<div class="gallery-div-size">
+	    		<img src="${pageContext.request.contextPath}/display?filename="${board.attachs[0].path}/s_${board.attachs[0].uuid}">
+	    		<a href="detail?bno=${board.bno}">${board.title}</a>
+    		</div>
+    	</c:if>
+    </c:forEach>
   </div>
 </div>
 

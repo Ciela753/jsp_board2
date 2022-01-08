@@ -1,4 +1,4 @@
-package controller.board;
+package controller.gallery;
 
 import java.io.IOException;
 
@@ -12,9 +12,9 @@ import service.BoardService;
 import vo.Criteria;
 import vo.PageDTO;
 
-@WebServlet({"/board/list", "/index.html"})
-public class BoardList extends HttpServlet {
-	private BoardService boardService = new BoardService();
+@WebServlet("/gallery/list")
+public class GalleryList extends HttpServlet {
+
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		BoardService service = new BoardService();
@@ -22,16 +22,12 @@ public class BoardList extends HttpServlet {
 		String pn = req.getParameter("pageNum");
 		String am = req.getParameter("amount");
 		if(pn==null) pn="1";
-		if(am == null) am = "10";
+		if(am == null) am ="6";
 		
 		Criteria cri = new Criteria(Integer.parseInt(pn), Integer.parseInt(am));
-		req.setAttribute("boardList", boardService.list(cri));
-		req.setAttribute("page", new PageDTO(service.getCount(), cri));
-		req.getRequestDispatcher("/WEB-INF/jsp/board/list.jsp").forward(req, resp);
-		
-//		System.out.println(boardService.list());
-//		req.setAttribute("boardList", boardService.list());
-//		req.getRequestDispatcher("/WEB-INF/jsp/board/list.jsp").forward(req, resp);
+		req.setAttribute("list", service.list());
+		req.setAttribute("page", new PageDTO(service.getCount(cri), cri));
+		req.getRequestDispatcher("/WEB-INF/jsp/gallery/list.jsp").forward(req, resp);
 	}
-	
+		
 }

@@ -1,5 +1,10 @@
 package vo;
 
+import lombok.Getter;
+import lombok.ToString;
+
+@Getter
+@ToString
 public class PageDTO {
 	private static int PAGE_AMOUNT=10;
 	private int total;
@@ -21,17 +26,24 @@ public class PageDTO {
 	public PageDTO(int total, Criteria cri) {
 		this.total = total;
 		this.cri = cri;
+		// TODO Auto-generated constructor stub
 		
-		endPage = ((cri.getPagenum() - 1) / PAGE_AMOUNT+1)*PAGE_AMOUNT;
+		//수식계산
+		endPage = ((cri.getPageNum() - 1) / PAGE_AMOUNT+1)*PAGE_AMOUNT;
 		
 		startPage = endPage - PAGE_AMOUNT + 1;
 		
-		int realEnd = (total+cri.getAmount() - 1)/cri.getAmount();
+		int realEnd = (total + cri.getAmount() - 1) / cri.getAmount();
 		
 		endPage = realEnd < endPage ? realEnd : endPage;
 		
 		prev = startPage > 1;
 		next = endPage < realEnd;
+		
+		System.out.println("페이지DTO탐");
+	}
+	public static void main(String[] args) {
+		System.out.println(new PageDTO(90, new Criteria(1, 5)));
 	}
 	
 	

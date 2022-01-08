@@ -6,20 +6,11 @@ import lombok.Data;
 @Data
 @AllArgsConstructor
 public class Criteria {
-	private int pagenum;
+	private int pageNum;
 	private int amount;
-	private int category=1;
 	
 	public Criteria() {
-		this(1, 20);
+		this(1, 5);
 	}
-	
-	public Criteria(int pagenum, int amount) {
-		super();
-		this.pagenum = pagenum;
-		this.amount = amount;
-		this.category = category;
-	}
-	
 	
 }
