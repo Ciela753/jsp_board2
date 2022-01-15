@@ -60,11 +60,26 @@ ArrayList<Board> arrayList = (ArrayList<Board>)request.getAttribute("boardList")
     	</c:if>
     	<c:if test="${not empty board}">
     		<div class="gallery-div-size">
-	    		<img src="${pageContext.request.contextPath}/display?filename="${board.attachs[0].path}/s_${board.attachs[0].uuid}">
+					<img class="gallery-img" src="${pageContext.request.contextPath}/display?filename=${board.attachs[0].path}/s_${board.attachs[0].uuid}" alt="images/concert-resize.jpg">
 	    		<a href="detail?bno=${board.bno}">${board.title}</a>
     		</div>
     	</c:if>
     </c:forEach>
+    <ul class="pagination justify-content-end">
+				<li class="page-item ${page.prev ? '' : 'disabled'}">
+					<a class="page-link" href="list?pageNum=${page.startPage-1}&amount=${page.cri.amount}">Previous</a>
+				</li>
+			  	
+			  	<c:forEach begin="${page.startPage}" end="${page.endPage}" var="p">
+				  	<li class="page-item ${p == page.cri.pageNum ? 'active' : ''}">
+				  		<a class="page-link " href="list?pageNum=${p}&amount=${page.cri.amount}">${p}</a>
+				  	</li>
+			  	</c:forEach>
+			  	
+			  	<li class="page-item ${page.next ? '' : 'disabled'}">
+			  		<a class="page-link" href="list?pageNum=${page.endPage+1}&amount=${page.cri.amount}">Next</a>
+			  	</li>
+	</ul>
   </div>
 </div>
 

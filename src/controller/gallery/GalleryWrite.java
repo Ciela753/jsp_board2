@@ -32,12 +32,12 @@ public class GalleryWrite extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		req.getRequestDispatcher("/WEB-INF/jsp/board/write.jsp").forward(req, resp);
+		req.getRequestDispatcher("/WEB-INF/jsp/gallery/write.jsp").forward(req, resp);
 	}
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		req.setCharacterEncoding("utf-8");
+//		req.setCharacterEncoding("utf-8");
 		// TODO Auto-generated method stub
 		
 		//파일을 저장할 경로 지정
@@ -84,14 +84,16 @@ public class GalleryWrite extends HttpServlet {
 		
 		String title = multipartRequest.getParameter("title");
 		String id=((Member)req.getSession().getAttribute("member")).getId();
+		String content = multipartRequest.getParameter("content");
 		
-		Board board = new Board(title, "", id);
+		Board board = new Board(title, content, id);
 		board.setAttachs(attachs);
 		
 		new BoardService().write(board);
 		
 		resp.sendRedirect("list");
 		
+		System.out.println(board);
 	}
 	
 	private String getPath() {

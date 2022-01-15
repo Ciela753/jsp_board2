@@ -10,7 +10,7 @@ public class Criteria {
 	private int amount;
 	
 	public Criteria() {
-		this(1, 5);
+		this(1, 6);
 	}
 	
 }

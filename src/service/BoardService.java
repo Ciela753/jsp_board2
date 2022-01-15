@@ -43,7 +43,7 @@ public class BoardService {
 		return dao.getCount();
 	}
 	public int getCount(Criteria cri) {
-		return 0;
+		return dao.getCount();
 	}
 
 }

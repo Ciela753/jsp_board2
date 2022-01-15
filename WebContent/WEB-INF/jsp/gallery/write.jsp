@@ -26,14 +26,26 @@
   <p><a href="list">Back to List</a></p> 
 </div>
 <div id="divwidth">
-	<form method="post" >
+	<form method="post" enctype="multipart/form-data">
 	  <div class="mb-3 mt-3">
 	    <label for="email" class="form-label">Title:</label>
 	    <input type="text" class="form-control" id="email" placeholder="Enter Title" name="title">
 	  </div>
 	  <div class="mb-3">
 	    <label for="pwd" class="form-label">writer:</label>
-	    <input type="text" class="form-control" id="pwd" placeholder="Enter Writer" name="writer">
+	    <input type="text" class="form-control" id="pwd" value="${member.id}" name="writer" readonly name="writer">
+	  </div>
+	  <div class="mb-3">
+	    <label for="pwd" class="form-label">File:</label>
+	    <input type="file" class="form-control" name="filed1" accept="image/png, image/jpeg, image/gif">
+	  </div>
+	  <div class="mb-3">
+	    <label for="pwd" class="form-label">File:</label>
+	    <input type="file" class="form-control" name="filed2" accept="image/png, image/jpeg, image/gif">
+	  </div>
+	  <div class="mb-3">
+	    <label for="pwd" class="form-label">File:</label>
+	    <input type="file" class="form-control" name="filed3" accept="image/png, image/jpeg, image/gif">
 	  </div>
 	  <div>
 	  	<label for="comment">Contents:</label>

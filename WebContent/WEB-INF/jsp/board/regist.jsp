@@ -33,7 +33,7 @@
 	  </div>
 	  <div class="mb-3">
 	    <label for="pwd" class="form-label">writer:</label>
-	    <input type="text" class="form-control" id="pwd" placeholder="Enter Writer" name="writer">
+	    <input type="text" class="form-control" id="pwd" value="${member.id}" name="writer" readonly>
 	  </div>
 	  <div>
 	  	<label for="comment">Contents:</label>

@@ -116,11 +116,11 @@ public class BoardDao {
 			rs.next();
 			bno=rs.getLong(1);
 			
-			PreparedStatement pstmt = connection.prepareStatement("INSERT INTO TBL_BOARD (BNO, TITLE, CONTENT, WRITER) VALUES (?, ?, ?, ?)");
+			PreparedStatement pstmt = connection.prepareStatement("INSERT INTO TBL_BOARD (BNO, TITLE, CONTENT, WRITER, REGDATE) VALUES (?, ?, ?, ?, SYSDATE)");
 			int idx = 1;
 			pstmt.setLong(idx++, bno);
 			pstmt.setString(idx++, board.getTitle());
-			pstmt.setString(idx, board.getContent());
+			pstmt.setString(idx++, board.getContent());
 			pstmt.setString(idx++, board.getWriter());
 			
 			pstmt.executeQuery();
@@ -251,7 +251,7 @@ public class BoardDao {
 		Board board=null;
 		PreparedStatement pstmt;
 		try {
-			pstmt = connection.prepareStatement("SELECT BNO, TITLE, WRITER, CONTENT, REGDATE FROM TBL_BOARD WHERE BNO= ?");
+			pstmt = connection.prepareStatement("SELECT BNO, TITLE, CONTENT, WRITER, REGDATE FROM TBL_BOARD WHERE BNO= ?");
 			pstmt.setLong(1, bno);
 			
 			ResultSet resultSet = pstmt.executeQuery();

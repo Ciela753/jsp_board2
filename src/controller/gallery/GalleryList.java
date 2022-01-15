@@ -25,7 +25,7 @@ public class GalleryList extends HttpServlet {
 		if(am == null) am ="6";
 		
 		Criteria cri = new Criteria(Integer.parseInt(pn), Integer.parseInt(am));
-		req.setAttribute("list", service.list());
+		req.setAttribute("list", service.list(cri));
 		req.setAttribute("page", new PageDTO(service.getCount(cri), cri));
 		req.getRequestDispatcher("/WEB-INF/jsp/gallery/list.jsp").forward(req, resp);
 	}

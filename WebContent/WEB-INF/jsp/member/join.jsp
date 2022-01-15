@@ -31,7 +31,7 @@
   <p><a href="board/list">Back to List</a></p> 
 </div>
 <div id="divwidth">
-	<form method="post" name="">
+	<form method="post" >
 	  <div class="mb-3 mt-3">
 	    <label for="email" class="form-label">ID:</label>
 	    <input type="text" class="form-control" id="id" placeholder="Enter Id" name="id">
@@ -62,7 +62,7 @@
 					success : function(data) {
 						if(data/1){
 							alert("가입 성공");
-							$("#id").next().text("");
+							location.href="login";
 						}
 						else {
 							alert("이미 가입된 회원입니다.");
@@ -72,7 +72,7 @@
 				
 				})
 			}
-			//event.preventDefault();
+			 event.preventDefault();
 		})
 	});
 </script>
